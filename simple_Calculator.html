@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        #heder{
+            text-align: center;
+        }
+         .button{
+           text-align: center;
+        }
+        #Num1{
+            position: absolute;
+            top: 200px;
+            left: 520px;
+            
+        }
+        #Num2{
+            position: absolute;
+            top: 200px;
+            left: 800px; 
+        }
+        .radio{
+            text-align: center;
+        }
+        #result{
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heder">Simple Calculator</h1>
+    <h3 id="Name">Name:Ziad Hossam Eldin Mostafa</h3>
+    <h3 id="Id">ID:22100793</h3>
+    <div class="radio">
+    <label id="R"><input type="radio" name="operator" value="+"> + (Addition)</label>
+   <label  id="R"><input type="radio" name="operator" value="-"> - (Subtraction)</label>
+   <label  id="R"><input type="radio" name="operator" value="*"> × (Multiplication)</label>
+   <label  id="R"><input type="radio" name="operator" value="/"> ÷ (Division)</label><br><br>
+   </div> 
+   <input type="number" id="Num1" placeholder="Type your first Num">
+    <input type="number" id="Num2" placeholder="Type your sacend Num"><br><br>
+    <div class="button">
+    <button onclick="getUserInput()" id="button">calculate</button>
+    </div>
+    <h3 id="result"></h3>
+    <script>
+      function getUserInput() {  
+        let num1 = parseInt(document.getElementById("Num1").value);
+        let num2 = parseInt(document.getElementById("Num2").value);
+        let operator = document.querySelector('input[name="operator"]:checked');
+        
+      
+      let result;
+      if(operator.value=='+'){
+        result = num1 + num2;
+      }
+      else if(operator.value=='-'){
+        result = num1 - num2;
+      }
+      else if (operator.value=='*'){
+        result = num1 * num2;
+      }
+      else{
+         result = num1 / num2;
+      }
+      document.getElementById("result").innerText = `Result: ${num1} ${operator.value} ${num2} = ${result}`;
+
+    }
+        </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management System</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 30px; }
+    button { margin: 10px; padding: 10px 20px; }
+    table { margin: 20px auto; border-collapse: collapse; width: 90%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Management System</h1>
+  </header>
+
+  <div class="buttons">
+    <button  onclick="showProducts()">Show Products</button>
+    <button  onclick="addProduct()">Add Product</button>
+    <button  onclick="deleteProduct()">Delete Product</button>
+  </div>
+
+  <div id="tableArea"></div>
+  <div id="output"></div>
+
+  <script>
+    // Products (use local images)
+    let products = [
+      ["Phone", "P001", 500, "phone.jpeg"],
+      ["Laptop", "P002", 1200, "labtop.jpeg"],
+      ["Headphones", "P003", 150, "headphones.jpeg"],
+      ["Watch", "P004", 250, "smartwatch.jpeg"],
+      ["tablet", "P005", 800, "tablet.jpeg"]
+    ];
+
+    function showProducts() {
+      let table = `<table>
+        <tr>
+          <th>Product Name</th>
+          <th>Product ID</th>
+          <th>Price ($)</th>
+          <th>Image</th>
+        </tr>`;
+      
+      for (let p of products) {
+        table += `<tr>
+          <td>${p[0]}</td>
+          <td>${p[1]}</td>
+          <td>${p[2]}</td>
+          <td><img src="${p[3]}"></td>
+        </tr>`;
+      }
+      table += `</table>`;
+      document.getElementById("tableArea").innerHTML = table;
+      document.getElementById("output").innerText = "";
+    }
+
+    function addProduct() {
+      let name = prompt("Enter product name:");
+      let id = prompt("Enter product ID:");
+      let price = prompt("Enter product price:");
+      let image = prompt("Enter image file name  e.g. 'camera.jpeg'):");
+
+      products.push([name, id, price, image]);
+      document.getElementById("output").innerText = " Product Added!";
+    }
+
+    function deleteProduct() {
+      let id = prompt("Enter product ID to delete:");
+      let index = products.findIndex(p => p[1] === id);
+
+      if (index !== -1) {
+        products.splice(index, 1);
+        document.getElementById("output").innerText = "Product Deleted!";
+      } 
+    }
+  </script>
+</body>
+</html>

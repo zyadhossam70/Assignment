@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 30px; }
+        button { margin: 10px; padding: 10px 20px; }
+        table { margin: 20px auto; border-collapse: collapse; width: 90%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <div>
+    <button onclick="showStudents()">Show Students</button>
+    <button onclick="addStudent()">Add Student</button>
+    <button onclick="deleteStudent()">Delete Student</button>
+  </div>
+  <div id="output"></div>
+  <script>
+    let student1 = ["Ziad Hossam", "22100793", "4", 100, 100, 100, 100, 100];
+    let student2 = ["Ali Ahmed", "22100800", "4", 80, 80, 80, 80, 80];
+    let student3 = ["Adam rany", "22101416", "4", 0, 0, 0, 0, 0];
+    let student4 = ["Ramy adel", "22100123", "4", 1, 1, 1, 1, 1];
+    let student5 = ["Mohamed fawzy", "22101234", "4", 2, 2, 2, 2, 2];
+    let students = [student1, student2, student3,student4,student5];
+    let subjects = ["Math","Programming","Networking","OS","Security"];
+
+        function showStudents() {
+      let Show = `<table>
+        <tr><th>Name</th><th>ID</th><th>Level</th><th>Math</th><th>Programming</th><th>Networking</th><th>OS</th><th>Security</th></tr>`;
+      
+      for (let s of students) {
+    Show += `<tr>
+          <td>${s[0]}</td>
+          <td>${s[1]}</td>
+          <td>${s[2]}</td>
+          <td>${s[3]}</td>
+          <td>${s[4]}</td>
+          <td>${s[5]}</td>
+          <td>${s[6]}</td>
+          <td>${s[7]}</td>
+        </tr>`;
+      }
+    Show += `</table>`;
+      document.getElementById("output").innerHTML =Show;
+    }
+    function addStudent() {
+      let name = prompt("Name:");
+      let id = prompt("ID:");
+      let level = prompt("Level:");
+      let math = parseInt(prompt("Math:"));
+      let prog = parseInt(prompt("Programming:"));
+      let net = parseInt(prompt("Networking:"));
+      let os = parseInt(prompt("OS:"));
+      let sec = parseInt(prompt("Security:"));
+      
+      students.push([name, id, level, math, prog, net, os, sec]);
+      document.getElementById("output").innerHTML ="Added";
+    }
+    function deleteStudent() {
+      let id = prompt("Enter ID to delete:");
+      let index = students.findIndex(s => s[1] === id);
+      if (index !== -1) {
+        students.splice(index, 1);
+        document.getElementById("output").innerHTML ="Deleted";
+      }
+    }
+  </script>
+    
+</body>
+<Show>
