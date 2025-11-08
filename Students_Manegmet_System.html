@@ -21,18 +21,21 @@
   </div>
   <div id="output"></div>
   <script>
+    //make for every student an array 
     let student1 = ["Ziad Hossam", "22100793", "4", 100, 100, 100, 100, 100];
     let student2 = ["Ali Ahmed", "22100800", "4", 80, 80, 80, 80, 80];
     let student3 = ["Adam rany", "22101416", "4", 0, 0, 0, 0, 0];
     let student4 = ["Ramy adel", "22100123", "4", 1, 1, 1, 1, 1];
     let student5 = ["Mohamed fawzy", "22101234", "4", 2, 2, 2, 2, 2];
+    //put all students data in one array 
     let students = [student1, student2, student3,student4,student5];
+    //put sbjects data in array  
     let subjects = ["Math","Programming","Networking","OS","Security"];
 
         function showStudents() {
       let Show = `<table>
         <tr><th>Name</th><th>ID</th><th>Level</th><th>Math</th><th>Programming</th><th>Networking</th><th>OS</th><th>Security</th></tr>`;
-      
+      //simple for loop put data in colom 
       for (let s of students) {
     Show += `<tr>
           <td>${s[0]}</td>
@@ -48,6 +51,7 @@
     Show += `</table>`;
       document.getElementById("output").innerHTML =Show;
     }
+    //get data with prompt
     function addStudent() {
       let name = prompt("Name:");
       let id = prompt("ID:");
@@ -57,14 +61,16 @@
       let net = parseInt(prompt("Networking:"));
       let os = parseInt(prompt("OS:"));
       let sec = parseInt(prompt("Security:"));
-      
+      //push it into array 
       students.push([name, id, level, math, prog, net, os, sec]);
       document.getElementById("output").innerHTML ="Added";
     }
     function deleteStudent() {
       let id = prompt("Enter ID to delete:");
+      //arrow function that search for student id we need to delete
       let index = students.findIndex(s => s[1] === id);
       if (index !== -1) {
+        //if we found id in array delete it with splice
         students.splice(index, 1);
         document.getElementById("output").innerHTML ="Deleted";
       }

@@ -31,7 +31,7 @@
   <div id="output"></div>
 
   <script>
-    // Products (use local images)
+    // Products array
     let products = [
       ["Phone", "P001", 500, "phone.jpeg"],
       ["Laptop", "P002", 1200, "labtop.jpeg"],
@@ -39,7 +39,7 @@
       ["Watch", "P004", 250, "smartwatch.jpeg"],
       ["tablet", "P005", 800, "tablet.jpeg"]
     ];
-
+    //show products in table
     function showProducts() {
       let table = `<table>
         <tr>
@@ -48,7 +48,7 @@
           <th>Price ($)</th>
           <th>Image</th>
         </tr>`;
-      
+      //simple for loop to put data into the table 
       for (let p of products) {
         table += `<tr>
           <td>${p[0]}</td>
@@ -58,25 +58,29 @@
         </tr>`;
       }
       table += `</table>`;
+      //to display table inti tableArea
       document.getElementById("tableArea").innerHTML = table;
       document.getElementById("output").innerText = "";
     }
-
+    
     function addProduct() {
+        //get data with prompt
       let name = prompt("Enter product name:");
       let id = prompt("Enter product ID:");
       let price = prompt("Enter product price:");
       let image = prompt("Enter image file name  e.g. 'camera.jpeg'):");
-
+        //push into array
       products.push([name, id, price, image]);
       document.getElementById("output").innerText = " Product Added!";
     }
 
     function deleteProduct() {
       let id = prompt("Enter product ID to delete:");
+      //arrow function that search for product id we need to delete 
       let index = products.findIndex(p => p[1] === id);
 
       if (index !== -1) {
+        //if we found id in array delete it with splice
         products.splice(index, 1);
         document.getElementById("output").innerText = "Product Deleted!";
       } 
